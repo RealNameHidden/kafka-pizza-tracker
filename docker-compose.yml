@@ -1,4 +1,4 @@
-
+version: "3.9"
 
 services:
   zookeeper:
@@ -20,22 +20,19 @@ services:
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
 
   order-service:
-    build:
-      context: .
-      dockerfile: order-service/Dockerfile
+    build: ./order-service
     depends_on:
       - kafka
+    network_mode: host
 
   kitchen-service:
-    build:
-      context: .
-      dockerfile: kitchen-service/Dockerfile
+    build: ./kitchen-service
     depends_on:
       - kafka
+    network_mode: host
 
   delivery-service:
-    build:
-      context: .
-      dockerfile: delivery-service/Dockerfile
+    build: ./delivery-service
     depends_on:
       - kafka
+    network_mode: host
