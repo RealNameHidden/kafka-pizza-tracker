@@ -5,6 +5,6 @@ COPY . .
 
 RUN go build -o common ./common
 
-FROM gcr.io/distroless/base
+FROM gcr.io/distroless/base-debian11
 COPY --from=builder /app/common /app/app
 ENTRYPOINT ["/app/app"]

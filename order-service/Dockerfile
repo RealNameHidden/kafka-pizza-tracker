@@ -5,6 +5,6 @@ COPY . .
 
 RUN go build -o . /app/app
 
-FROM gcr.io/distroless/base
+FROM gcr.io/distroless/base-debian11
 COPY --from=builder /app/order-service /app/order-service 
 ENTRYPOINT ["/app/app "]
